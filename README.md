@@ -1,8 +1,29 @@
-# React + Vite
+# Weather Dashboard Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is the frontend for a Task management application built with React and Vite. It provides an interface for users to register, log in, create task , and manage their Status.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User registration and login.
+- Add task with dueData and reminder date.
+- Display task based on status and their priority level.
+- Route protection for authenticated users.
+- Form validation with Yup and Formik.
+- State management with Redux.
+- Styling with Tailwind CSS.
+
+## Prerequisites
+
+- React
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/irfan0374/Task-Management-System-FrontEnd
+   cd Task_Management
+   npm install
+   npm run dev
+
+   
