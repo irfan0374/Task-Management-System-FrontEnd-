@@ -39,7 +39,7 @@ const LoginPage = () => {
         );
 
         toast.success(res?.data?.message)
-        navigate("/HomePage")
+        navigate("/taskDetails")
       }
 
     } catch (error) {

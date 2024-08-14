@@ -16,12 +16,11 @@ const SignupPage = () => {
       const res = await userSignup(values)
       if (res?.status === 201) {
         
-            toast.success(res?.data?.message)
-            navigation("/login")   
-        
+            toast.success("You can login now")
+            navigation("/")   
       }
     } catch (error) {
-      console.log("hello error")
+   
       console.log(error.response)
       setLoading(false);
       toast.error(error.response?.data?.status)

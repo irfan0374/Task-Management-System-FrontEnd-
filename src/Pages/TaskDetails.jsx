@@ -19,18 +19,18 @@ const TaskBoard = () => {
     const [tasks, setTasks] = useState([])
 
 
-// status color
+    // status color
 
     const getStatusColor = (status) => {
         switch (status) {
             case 'pending':
-                return 'bg-red-600'; 
+                return 'bg-red-600';
             case 'progress':
-                return 'bg-orange-600'; 
+                return 'bg-orange-600';
             case 'complete':
-                return 'bg-green-600'; 
+                return 'bg-green-600';
             default:
-                return 'bg-gray-300'; 
+                return 'bg-gray-300';
         }
     };
 
@@ -61,7 +61,7 @@ const TaskBoard = () => {
     const handleSortChange = (e) => {
         const selected = e.target.value;
         setSelectedOption(selected);
-        onSortChange(selected); 
+        onSortChange(selected);
     }
 
     return (
@@ -119,59 +119,62 @@ const TaskBoard = () => {
 
 
                         </div>
-                        <div className='grid grid-cols-3 gap-3'>
+                        {tasks && tasks.length > 0 ? (
+                            <div className='grid grid-cols-3 gap-3'>
 
 
-                            {tasks.map((task, taskIndex) => (
-                                <div key={taskIndex} className="bg-white p-4 rounded-lg mb-4 shadow">
-                                    <div className="flex justify-between items-center mb-2">
-                                    <div className={`w-3 h-3 rounded-full ${getStatusColor(task.status)}`}>
 
-                                        </div>
-                                        <span className={`text-xs ${task.priority.includes('High') ? 'text-red-500' : 'text-yellow-500'}`}>
-                                            {task.priority} Priority
-                                        </span>
-                                        <div className="dropdown dropdown-end">
-                                            <div tabIndex={0} role="button" >
-                                                <div className="w-2 rounded-full">
-                                                    <button className="text-black">...</button>
+                                {tasks?.map((task, taskIndex) => (
+                                    <div key={taskIndex} className="bg-white p-4 rounded-lg mb-4 shadow">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <div className={`w-3 h-3 rounded-full ${getStatusColor(task.status)}`}>
 
-                                                </div>
                                             </div>
-                                            <ul
-                                                tabIndex={0}
-                                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-36 p-2 shadow"
-                                            >
-                                                <li>
-                                                    <a onClick={handleStatus("pending")} className="justify-between">
-                                                        pending
+                                            <span className={`text-xs ${task.priority.includes('High') ? 'text-red-500' : 'text-yellow-500'}`}>
+                                                {task.priority} Priority
+                                            </span>
+                                            <div className="dropdown dropdown-end">
+                                                <div tabIndex={0} role="button" >
+                                                    <div className="w-2 rounded-full">
+                                                        <button className="text-black">...</button>
 
-                                                    </a>
-                                                </li>
-                                                <li><a onClick={handleStatus("pending")}>progress</a></li>
-                                                {/* Use 'li' tag for consistency and apply necessary styles */}
-                                                <li>
-                                                    <a onClick={handleStatus("completed")} className="cursor-pointer">completed</a>
-                                                </li>
-                                            </ul>
+                                                    </div>
+                                                </div>
+                                                <ul
+                                                    tabIndex={0}
+                                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-36 p-2 shadow"
+                                                >
+                                                    <li>
+                                                        <a onClick={handleStatus("pending")} className="justify-between">
+                                                            pending
+
+                                                        </a>
+                                                    </li>
+                                                    <li><a onClick={handleStatus("pending")}>progress</a></li>
+                                                    {/* Use 'li' tag for consistency and apply necessary styles */}
+                                                    <li>
+                                                        <a onClick={handleStatus("completed")} className="cursor-pointer">completed</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h3 className="font-bold mb-2">{task.title}</h3>
+                                        <p className="text-sm text-gray-500 mb-2">{task.description}</p>
+                                        { }
+                                        <div className="flex justify-between items-center mb-2 text-xs">
+                                            DueDate:
+                                            <span className="text-sm text-gray-500">{task.dueDate}</span>
+
+                                        </div>
+                                        <div className="flex justify-between items-center">
+
+                                            <button className="text-green-300 text-sm">Edit</button>
                                         </div>
                                     </div>
-                                    <h3 className="font-bold mb-2">{task.title}</h3>
-                                    <p className="text-sm text-gray-500 mb-2">{task.description}</p>
-                                    { }
-                                    <div className="flex justify-between items-center mb-2 text-xs">
-                                        DueDate:
-                                        <span className="text-sm text-gray-500">{task.dueDate}</span>
+                                ))}
 
-                                    </div>
-                                    <div className="flex justify-between items-center">
-
-                                        <button className="text-green-300 text-sm">Edit</button>
-                                    </div>
-                                </div>
-                            ))}
-
-                        </div>
+                            </div>
+                        ) : (<div>no task found</div>)}
 
 
                     </div>

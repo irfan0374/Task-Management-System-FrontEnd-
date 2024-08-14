@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts';
 
 const Donut = ({ data }) => {
   const [options, setOptions] = useState({
-    labels: ['Feels Like', 'Min Temperature', 'Max Temperature', 'Current Temperature']
+    labels: ["Normal","Medium","Hard"]
   });
   const [series, setSeries] = useState([]);
   const [dataAvailable, setDataAvailable] = useState(false);
@@ -11,9 +11,9 @@ const Donut = ({ data }) => {
   useEffect(() => {
     if (data && data.main) {
   
-      const { feels_like, temp_min, temp_max, temp } = data.main;
+      const { Normal,Medium,Hard } = data.main;
       
-      const seriesData = [feels_like, temp_min, temp_max, temp];
+      const seriesData = ["Normal","Medium","Hard"];
       
    
       setSeries(seriesData);
